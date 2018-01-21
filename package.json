@@ -1,0 +1,53 @@
+{
+  "name": "time-tools",
+  "version": "1.0.0",
+  "description": "Utilities & tools for time-related stuff",
+  "main": "./dist/lib/index.js",
+  "types": "./dist/lib/index.d.ts",
+  "scripts": {
+    "build": "npm run clean && tsc && tsc -m es2015 -t ES2015 --outDir dist/lib-esm && webpack",
+    "build:watch": "tsc -w",
+    "clean": "rimraf dist",
+    "lint": "tslint -p .",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arutkowski00/time-tools.git"
+  },
+  "keywords": [
+    "time",
+    "js",
+    "tool",
+    "utility",
+    "helper",
+    "class"
+  ],
+  "author": "Adam Rutkowski <a_rutkowski@outlook.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/arutkowski00/time-tools/issues"
+  },
+  "homepage": "https://github.com/arutkowski00/time-tools#readme",
+  "devDependencies": {
+    "@types/jest": "^22.0.1",
+    "jest": "^22.1.4",
+    "rimraf": "^2.6.2",
+    "ts-jest": "^22.0.1",
+    "ts-loader": "^3.3.0",
+    "tslint": "^5.9.1",
+    "typescript": "^2.6.2",
+    "webpack": "^3.10.0"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "js",
+      "json"
+    ],
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/tests/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$"
+  }
+}
