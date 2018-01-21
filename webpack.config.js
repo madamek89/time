@@ -4,8 +4,8 @@ const webpack = require("webpack");
 module.exports = {
   devtool: "source-map",
   entry: {
-    "time-tools": "./src/index.ts",
-    "time-tools.min": "./src/index.ts",
+    "time": "./src/index.ts",
+    "time.min": "./src/index.ts",
   },
   module: {
     rules: [
@@ -23,7 +23,7 @@ module.exports = {
   },
   output: {
     filename: "[name].js",
-    library: "TimeTools",
+    library: "Time",
     libraryTarget: "umd",
     path: path.resolve(__dirname, "dist", "bundles"),
     umdNamedDefine: true,
