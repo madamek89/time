@@ -9,7 +9,8 @@
     "build:watch": "tsc -w",
     "clean": "rimraf dist",
     "lint": "tslint -p .",
-    "test": "jest"
+    "test": "jest",
+    "test:ci": "jest --coverage --coverageReporters lcov && cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage"
   },
   "repository": {
     "type": "git",
@@ -31,6 +32,7 @@
   "homepage": "https://github.com/arutkowski00/time#readme",
   "devDependencies": {
     "@types/jest": "^22.0.1",
+    "codacy-coverage": "^2.0.3",
     "jest": "^22.1.4",
     "rimraf": "^2.6.2",
     "ts-jest": "^22.0.1",
