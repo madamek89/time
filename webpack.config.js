@@ -1,4 +1,5 @@
 const path = require("path");
+const TypedocWebpackPlugin = require("typedoc-webpack-plugin");
 const webpack = require("webpack");
 
 module.exports = {
@@ -8,18 +9,16 @@ module.exports = {
     "time.min": "./src/index.ts",
   },
   module: {
-    rules: [
-      {
-        exclude: /node_modules/,
-        test: /\.ts$/,
-        loader: "ts-loader",
-        options: {
-          compilerOptions: {
-            declaration: false
-          },
+    rules: [{
+      exclude: /node_modules/,
+      test: /\.ts$/,
+      loader: "ts-loader",
+      options: {
+        compilerOptions: {
+          declaration: false
         },
       },
-    ],
+    }, ],
   },
   output: {
     filename: "[name].js",
@@ -29,6 +28,13 @@ module.exports = {
     umdNamedDefine: true,
   },
   plugins: [
+    new TypedocWebpackPlugin({
+      // excludeNotExported: true,
+      excludePrivate: true,
+      mode: "file",
+      out: path.resolve(__dirname, "docs"),
+      theme: 'minimal',
+    }, ["./src"]),
     new webpack.optimize.UglifyJsPlugin({
       include: /\.min\.js$/,
       sourceMap: true,
