@@ -934,21 +934,24 @@ img { max-width: 100%; }
 	<div class="content-wrap">
 		<div class="tsd-panel tsd-typography">
 			<h1 id="time-build-status-https-travis-ci-org-arutkowski00-time-svg-branch-master-https-travis-ci-org-arutkowski00-time-npm-scoped-https-img-shields-io-npm-v-arutkowski00-time-svg-https-www-npmjs-com-package-arutkowski00-time-codacy-badge-https-api-codacy-com-project-badge-coverage-54e59b313f7844009bb6edcf9ecb509d-https-www-codacy-com-app-arutkowski00-time-utm_source-github-com-amp-utm_medium-referral-amp-utm_content-arutkowski00-time-amp-utm_campaign-badge_coverage-">time <a href="https://travis-ci.org/arutkowski00/time"><img src="https://travis-ci.org/arutkowski00/time.svg?branch=master" alt="Build Status"></a> <a href="https://www.npmjs.com/package/@arutkowski00/time"><img src="https://img.shields.io/npm/v/@arutkowski00/time.svg" alt="npm (scoped)"></a> <a href="https://www.codacy.com/app/arutkowski00/time?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=arutkowski00/time&amp;utm_campaign=Badge_Coverage"><img src="https://api.codacy.com/project/badge/Coverage/54e59b313f7844009bb6edcf9ecb509d" alt="Codacy Badge"></a></h1>
-			<p>JS utilities &amp; tools for time-related stuff with no dependencies!</p>
+			<p>Simple <strong>JavaScript library</strong> for parsing, displaying and manipulating <em>date-agnostic</em> time</p>
 			<h2 id="installation">Installation</h2>
 			<p>Yarn:</p>
 			<pre><code class="lang-sh">yarn add @arutkowski00/time
 </code></pre>
 			<p>npm:</p>
-			<pre><code><span class="hljs-built_in">npm</span> install --save @arutkowski00/time
-</code></pre><h2 id="usage">Usage</h2>
-			<p>Simply import <code>Time</code> class and use it:
-				```js
-			import { Time } from &#39;@arutkowski00/time&#39;;</p>
-			<p>let time = new Time(8, 20);
-			// time.toString() === &quot;08:20&quot;</p>
-			<p>time = Time.fromString(&quot;9:40&quot;);
-			// time.toString() === &quot;09:40&quot;</p>
+			<pre><code class="lang-sh">npm install --save @arutkowski00/time
+</code></pre>
+			<h2 id="usage">Usage</h2>
+			<p>Simply import <code>Time</code> class and use it:</p>
+			<pre><code class="lang-js"><span class="hljs-keyword">import</span> { Time } <span class="hljs-keyword">from</span> <span class="hljs-string">'@arutkowski00/time'</span>;
+
+<span class="hljs-keyword">let</span> time = <span class="hljs-keyword">new</span> Time(<span class="hljs-number">8</span>, <span class="hljs-number">20</span>); <span class="hljs-comment">// 08:20</span>
+time = Time.fromString(<span class="hljs-string">"9:40"</span>); <span class="hljs-comment">// 09:40</span>
+time.addMinutes(<span class="hljs-number">100</span>); <span class="hljs-comment">// 11:20</span>
+time.setHours(<span class="hljs-number">16</span>); <span class="hljs-comment">// 16:20</span>
+</code></pre>
+			<p>For more see <a href="https://arutkowski00.github.io/time/">documentation</a></p>
 		</div>
 		<div style="position:relative;"><a name="typedoc-main-index" class="tsd-anchor"></a></div>
 		<section class="tsd-panel-group tsd-index-group">
@@ -993,7 +996,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">DAY<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">24</span><span class="tsd-signature-symbol"> =&nbsp;24</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/arutkowski00/time/blob/f4a6400/src/constants.ts#L1">constants.ts:1</a></li>
+						<li>Defined in <a href="https://github.com/arutkowski00/time/blob/9485d79/src/constants.ts#L1">constants.ts:1</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1003,7 +1006,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">HOUR<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">60</span><span class="tsd-signature-symbol"> =&nbsp;60</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/arutkowski00/time/blob/f4a6400/src/constants.ts#L2">constants.ts:2</a></li>
+						<li>Defined in <a href="https://github.com/arutkowski00/time/blob/9485d79/src/constants.ts#L2">constants.ts:2</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1020,7 +1023,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/arutkowski00/time/blob/f4a6400/src/utils.ts#L2">utils.ts:2</a></li>
+								<li>Defined in <a href="https://github.com/arutkowski00/time/blob/9485d79/src/utils.ts#L2">utils.ts:2</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -1048,7 +1051,7 @@ img { max-width: 100%; }
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/arutkowski00/time/blob/f4a6400/src/utils.ts#L7">utils.ts:7</a></li>
+								<li>Defined in <a href="https://github.com/arutkowski00/time/blob/9485d79/src/utils.ts#L7">utils.ts:7</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
