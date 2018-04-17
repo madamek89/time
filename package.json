@@ -10,7 +10,8 @@
     "clean": "rimraf dist",
     "lint": "tslint -p .",
     "test": "jest",
-    "test:ci": "jest --coverage --coverageReporters lcov && cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage"
+    "test:ci": "jest --coverage --coverageReporters lcov && cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage",
+    "prepare": "npm run build"
   },
   "repository": {
     "type": "git",
