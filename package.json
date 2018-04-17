@@ -11,11 +11,13 @@
     "lint": "tslint -p .",
     "test": "jest",
     "test:ci": "jest --coverage --coverageReporters lcov && cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage",
-    "prepare": "npm run build"
+    "prepare": "npm run build",
+    "travis-deploy-once": "travis-deploy-once",
+    "semantic-release": "semantic-release"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/arutkowski00/time.git"
+    "url": "https://github.com/arutkowski00/time.git"
   },
   "keywords": [
     "time",
@@ -42,7 +44,9 @@
     "typedoc": "^0.9.0",
     "typedoc-webpack-plugin": "^1.1.4",
     "typescript": "^2.6.2",
-    "webpack": "^3.10.0"
+    "webpack": "^3.10.0",
+    "travis-deploy-once": "^4.4.1",
+    "semantic-release": "^15.1.7"
   },
   "jest": {
     "moduleFileExtensions": [
