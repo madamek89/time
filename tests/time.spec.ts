@@ -406,6 +406,6 @@ describe("Time", () => {
       const time = new Time(12, 33);
 
       expect(Time.fromDate(date)).toEqual(time);
-    })
+    });
   });
 });
