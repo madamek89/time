@@ -3,6 +3,10 @@ import { IReadonlyTime, ITime } from "./types";
 import { mod, pad } from "./utils";
 
 export class Time implements ITime {
+  public static fromDate(date: Date): Time {
+    return new Time(date.getHours(), date.getMinutes());
+  }
+
   public static fromString(time: string): Time {
     const [hours, minutes] = time.split(":").map((s) => +s);
 
