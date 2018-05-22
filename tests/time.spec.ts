@@ -399,4 +399,13 @@ describe("Time", () => {
       expect(time.valueOf()).toEqual(8 * 60 + 30);
     });
   });
+
+  describe("fromDate()", () => {
+    it("should return hours and minutes of Date", () => {
+      const date = new Date(2018, 1, 1, 12, 33, 12, 120);
+      const time = new Time(12, 33);
+
+      expect(Time.fromDate(date)).toEqual(time);
+    })
+  });
 });
