@@ -1,3 +1,11 @@
+<a name="1.2.0"></a>
+# [1.2.0](https://github.com/arutkowski00/time/compare/v1.1.2...v1.2.0) (2018-05-22)
+
+
+### Features
+
+* add fromDate method ([6ef0083](https://github.com/arutkowski00/time/commit/6ef0083))
+
 <a name="1.1.2"></a>
 ## [1.1.2](https://github.com/arutkowski00/time/compare/v1.1.1...v1.1.2) (2018-04-17)
 
