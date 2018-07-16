@@ -29,8 +29,8 @@ describe("Time", () => {
       it(`should instantiate ${outHour}h ${outMinute}m from ${inHour}h ${inMinute}m`, () => {
         const time = new Time(inHour, inMinute);
 
-        expect(time.hours).toEqual(outHour);
-        expect(time.minutes).toEqual(outMinute);
+        expect(time.hours).toBe(outHour);
+        expect(time.minutes).toBe(outMinute);
       });
     }
   });
@@ -62,10 +62,23 @@ describe("Time", () => {
       it(`should instantiate ${outHour}h ${outMinute}m from '${data.in}'`, () => {
         const time = Time.fromString(data.in);
 
-        expect(time.hours).toEqual(outHour);
-        expect(time.minutes).toEqual(outMinute);
+        expect(time.hours).toBe(outHour);
+        expect(time.minutes).toBe(outMinute);
       });
     }
+
+    it(`should return 0h 0m when param is null`, () => {
+      const time = Time.fromString(null);
+
+      expect(time.hours).toBe(0);
+      expect(time.minutes).toBe(0);
+    });
+
+    it(`should return undefined when param is undefined`, () => {
+      const time = Time.fromString(undefined);
+
+      expect(time).toBeUndefined();
+    });
   });
 
   describe("addHours()", () => {
@@ -74,8 +87,8 @@ describe("Time", () => {
 
       time.addHours(2);
 
-      expect(time.hours).toEqual(10);
-      expect(time.minutes).toEqual(20);
+      expect(time.hours).toBe(10);
+      expect(time.minutes).toBe(20);
     });
 
     it("should subtract hours", () => {
@@ -83,8 +96,8 @@ describe("Time", () => {
 
       time.addHours(-2);
 
-      expect(time.hours).toEqual(6);
-      expect(time.minutes).toEqual(20);
+      expect(time.hours).toBe(6);
+      expect(time.minutes).toBe(20);
     });
 
     it("should overflow to the next hour", () => {
@@ -92,8 +105,8 @@ describe("Time", () => {
 
       time.addMinutes(80);
 
-      expect(time.hours).toEqual(9);
-      expect(time.minutes).toEqual(40);
+      expect(time.hours).toBe(9);
+      expect(time.minutes).toBe(40);
     });
 
     it('should overflow to next "day"', () => {
@@ -101,8 +114,8 @@ describe("Time", () => {
 
       time.addHours(3);
 
-      expect(time.hours).toEqual(1);
-      expect(time.minutes).toEqual(10);
+      expect(time.hours).toBe(1);
+      expect(time.minutes).toBe(10);
     });
 
     it('should overflow to previous "day"', () => {
@@ -110,8 +123,8 @@ describe("Time", () => {
 
       time.addHours(-3);
 
-      expect(time.hours).toEqual(23);
-      expect(time.minutes).toEqual(10);
+      expect(time.hours).toBe(23);
+      expect(time.minutes).toBe(10);
     });
 
     it("should ignore decimals", () => {
@@ -119,8 +132,8 @@ describe("Time", () => {
 
       time.addHours(4.5);
 
-      expect(time.hours).toEqual(6);
-      expect(time.minutes).toEqual(10);
+      expect(time.hours).toBe(6);
+      expect(time.minutes).toBe(10);
     });
   });
 
@@ -130,8 +143,8 @@ describe("Time", () => {
 
       time.addMinutes(15);
 
-      expect(time.hours).toEqual(8);
-      expect(time.minutes).toEqual(35);
+      expect(time.hours).toBe(8);
+      expect(time.minutes).toBe(35);
     });
 
     it("should subtract minutes", () => {
@@ -139,8 +152,8 @@ describe("Time", () => {
 
       time.addMinutes(-15);
 
-      expect(time.hours).toEqual(8);
-      expect(time.minutes).toEqual(5);
+      expect(time.hours).toBe(8);
+      expect(time.minutes).toBe(5);
     });
 
     it("should overflow to next hour", () => {
@@ -148,8 +161,8 @@ describe("Time", () => {
 
       time.addMinutes(80);
 
-      expect(time.hours).toEqual(9);
-      expect(time.minutes).toEqual(40);
+      expect(time.hours).toBe(9);
+      expect(time.minutes).toBe(40);
     });
 
     it("should overflow to previous hour", () => {
@@ -157,8 +170,8 @@ describe("Time", () => {
 
       time.addMinutes(-80);
 
-      expect(time.hours).toEqual(7);
-      expect(time.minutes).toEqual(0);
+      expect(time.hours).toBe(7);
+      expect(time.minutes).toBe(0);
     });
 
     it('should overflow to next "day"', () => {
@@ -166,8 +179,8 @@ describe("Time", () => {
 
       time.addMinutes(4 * 60 + 20);
 
-      expect(time.hours).toEqual(2);
-      expect(time.minutes).toEqual(40);
+      expect(time.hours).toBe(2);
+      expect(time.minutes).toBe(40);
     });
 
     it('should overflow to previous "day"', () => {
@@ -175,8 +188,8 @@ describe("Time", () => {
 
       time.addMinutes(-4 * 60 - 20);
 
-      expect(time.hours).toEqual(22);
-      expect(time.minutes).toEqual(0);
+      expect(time.hours).toBe(22);
+      expect(time.minutes).toBe(0);
     });
 
     it("should ignore decimals", () => {
@@ -184,8 +197,8 @@ describe("Time", () => {
 
       time.addMinutes(4.5);
 
-      expect(time.hours).toEqual(2);
-      expect(time.minutes).toEqual(14);
+      expect(time.hours).toBe(2);
+      expect(time.minutes).toBe(14);
     });
   });
 
@@ -194,8 +207,8 @@ describe("Time", () => {
       const time1 = new Time(8, 20);
       const time2 = time1.clone();
 
-      expect(time2.hours).toEqual(time1.hours);
-      expect(time2.minutes).toEqual(time1.minutes);
+      expect(time2.hours).toBe(time1.hours);
+      expect(time2.minutes).toBe(time1.minutes);
     });
 
     it("should create an independent copy of Time instance", () => {
@@ -204,8 +217,8 @@ describe("Time", () => {
 
       time1.addMinutes(106);
 
-      expect(time2.hours).not.toEqual(time1.hours);
-      expect(time2.minutes).not.toEqual(time1.minutes);
+      expect(time2.hours).not.toBe(time1.hours);
+      expect(time2.minutes).not.toBe(time1.minutes);
     });
   });
 
@@ -216,7 +229,7 @@ describe("Time", () => {
 
       const diff = time2.diff(time1);
 
-      expect(diff).toEqual(80);
+      expect(diff).toBe(80);
     });
 
     it("should calculate the difference between smaller and larger Time in minutes", () => {
@@ -225,7 +238,7 @@ describe("Time", () => {
 
       const diff = time1.diff(time2);
 
-      expect(diff).toEqual(-80);
+      expect(diff).toBe(-80);
     });
   });
 
@@ -255,7 +268,7 @@ describe("Time", () => {
     it("should get minutes to next hour", () => {
       const time1 = new Time(8, 20);
 
-      expect(time1.getMinutesToNextHour()).toEqual(40);
+      expect(time1.getMinutesToNextHour()).toBe(40);
     });
   });
 
@@ -285,8 +298,8 @@ describe("Time", () => {
 
       time.setHours(2);
 
-      expect(time.hours).toEqual(2);
-      expect(time.minutes).toEqual(20);
+      expect(time.hours).toBe(2);
+      expect(time.minutes).toBe(20);
     });
 
     it('should overflow to next "day"', () => {
@@ -294,8 +307,8 @@ describe("Time", () => {
 
       time.setHours(28);
 
-      expect(time.hours).toEqual(4);
-      expect(time.minutes).toEqual(20);
+      expect(time.hours).toBe(4);
+      expect(time.minutes).toBe(20);
     });
 
     it('should overflow to previous "day"', () => {
@@ -303,8 +316,8 @@ describe("Time", () => {
 
       time.setHours(-4);
 
-      expect(time.hours).toEqual(20);
-      expect(time.minutes).toEqual(20);
+      expect(time.hours).toBe(20);
+      expect(time.minutes).toBe(20);
     });
 
     it("should ignore decimals", () => {
@@ -312,8 +325,8 @@ describe("Time", () => {
 
       time.setHours(2.5);
 
-      expect(time.hours).toEqual(2);
-      expect(time.minutes).toEqual(20);
+      expect(time.hours).toBe(2);
+      expect(time.minutes).toBe(20);
     });
   });
 
@@ -323,8 +336,8 @@ describe("Time", () => {
 
       time.setMinutes(5);
 
-      expect(time.hours).toEqual(8);
-      expect(time.minutes).toEqual(5);
+      expect(time.hours).toBe(8);
+      expect(time.minutes).toBe(5);
     });
 
     it("should overflow to next hour", () => {
@@ -332,8 +345,8 @@ describe("Time", () => {
 
       time.setMinutes(60 + 12);
 
-      expect(time.hours).toEqual(9);
-      expect(time.minutes).toEqual(12);
+      expect(time.hours).toBe(9);
+      expect(time.minutes).toBe(12);
     });
 
     it("should overflow to previous hour", () => {
@@ -341,8 +354,8 @@ describe("Time", () => {
 
       time.setMinutes(-24);
 
-      expect(time.hours).toEqual(7);
-      expect(time.minutes).toEqual(36);
+      expect(time.hours).toBe(7);
+      expect(time.minutes).toBe(36);
     });
 
     it('should overflow to next "day"', () => {
@@ -350,8 +363,8 @@ describe("Time", () => {
 
       time.setMinutes(20 * 60);
 
-      expect(time.hours).toEqual(4);
-      expect(time.minutes).toEqual(0);
+      expect(time.hours).toBe(4);
+      expect(time.minutes).toBe(0);
     });
 
     it('should overflow to previous "day"', () => {
@@ -359,8 +372,8 @@ describe("Time", () => {
 
       time.setMinutes(-20 * 60);
 
-      expect(time.hours).toEqual(12);
-      expect(time.minutes).toEqual(0);
+      expect(time.hours).toBe(12);
+      expect(time.minutes).toBe(0);
     });
 
     it("should ignore decimals", () => {
@@ -368,8 +381,8 @@ describe("Time", () => {
 
       time.setMinutes(23.5);
 
-      expect(time.hours).toEqual(8);
-      expect(time.minutes).toEqual(23);
+      expect(time.hours).toBe(8);
+      expect(time.minutes).toBe(23);
     });
   });
 
@@ -396,7 +409,7 @@ describe("Time", () => {
     it("should return total minutes of Time", () => {
       const time = new Time(8, 30);
 
-      expect(time.valueOf()).toEqual(8 * 60 + 30);
+      expect(time.valueOf()).toBe(8 * 60 + 30);
     });
   });
 
@@ -406,6 +419,10 @@ describe("Time", () => {
       const time = new Time(12, 33);
 
       expect(Time.fromDate(date)).toEqual(time);
+    });
+
+    it("should return undefined when param is undefined", () => {
+      expect(Time.fromDate(undefined)).toBe(undefined);
     });
   });
 });
