@@ -1,3 +1,11 @@
+<a name="1.3.0"></a>
+# [1.3.0](https://github.com/arutkowski00/time/compare/v1.2.0...v1.3.0) (2018-07-16)
+
+
+### Features
+
+* support undefined as param for static constructors ([ebd8ae6](https://github.com/arutkowski00/time/commit/ebd8ae6))
+
 <a name="1.2.0"></a>
 # [1.2.0](https://github.com/arutkowski00/time/compare/v1.1.2...v1.2.0) (2018-05-22)
 
