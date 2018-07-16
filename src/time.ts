@@ -3,11 +3,25 @@ import { IReadonlyTime, ITime } from "./types";
 import { mod, pad } from "./utils";
 
 export class Time implements ITime {
-  public static fromDate(date: Date): Time {
+  public static fromDate(date: Date): Time;
+  public static fromDate(date: Date | undefined): Time | undefined;
+  public static fromDate(date: Date | undefined): Time | undefined {
+    if (date === undefined) {
+      return undefined;
+    }
+
     return new Time(date.getHours(), date.getMinutes());
   }
 
-  public static fromString(time: string): Time {
+  public static fromString(time: string): Time;
+  public static fromString(time: string | undefined): Time | undefined;
+  public static fromString(time: string | undefined): Time | undefined {
+    if (time === undefined) {
+      return undefined;
+    }
+
+    time = time || "";
+
     const [hours, minutes] = time.split(":").map((s) => +s);
 
     return new Time(hours, minutes);
