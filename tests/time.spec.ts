@@ -164,16 +164,15 @@ describe("Time", () => {
       expect(time.minutes).toBe(5);
     });
 
-
     describe("hour overflowing", () => {
-      const testData : ITestData[]  = [
-        {in:  new Time(8, 20), minutesAdded: -80, out: new Time(7, 0)},
-        {in:  new Time(0, 0), minutesAdded: -0, out: new Time(0, 0)},
-        {in:  new Time(23, 20), minutesAdded: -30, out: new Time(22, 50)},
+      const testData: ITestData[] = [
+        { in: new Time(8, 20), minutesAdded: -80, out: new Time(7, 0) },
+        { in: new Time(0, 0), minutesAdded: -0, out: new Time(0, 0) },
+        { in: new Time(23, 20), minutesAdded: -30, out: new Time(22, 50) },
 
-        {in:  new Time(8, 20), minutesAdded: 80, out: new Time(9, 40)},
-        {in:  new Time(0, 0), minutesAdded: 130, out: new Time(2, 10)},
-        {in:  new Time(0, 0), minutesAdded: 61.9, out: new Time(1, 1)},
+        { in: new Time(8, 20), minutesAdded: 80, out: new Time(9, 40) },
+        { in: new Time(0, 0), minutesAdded: 130, out: new Time(2, 10) },
+        { in: new Time(0, 0), minutesAdded: 61.9, out: new Time(1, 1) },
       ];
 
       for (const data of testData) {
@@ -189,16 +188,16 @@ describe("Time", () => {
     });
 
     describe("day overflowing", () => {
-      const testData : ITestData[]  = [
-        {in:  new Time(22, 20), minutesAdded: 4 * 60 + 20, out: new Time(2, 40)},
-        {in:  new Time(23, 30), minutesAdded: 40, out: new Time(24, 10)},
-        {in:  new Time(-1.5, 0.5), minutesAdded: 65, out: new Time(24, 5)},
-        {in:  new Time(0, 40), minutesAdded: 20, out: new Time(1, 0)},
+      const testData: ITestData[] = [
+        { in: new Time(22, 20), minutesAdded: 4 * 60 + 20, out: new Time(2, 40) },
+        { in: new Time(23, 30), minutesAdded: 40, out: new Time(24, 10) },
+        { in: new Time(-1.5, 0.5), minutesAdded: 65, out: new Time(24, 5) },
+        { in: new Time(0, 40), minutesAdded: 20, out: new Time(1, 0) },
 
-        {in:  new Time(2, 20), minutesAdded: -4 * 60 - 20, out: new Time(22, 0)},
-        {in:  new Time(24, 10), minutesAdded: -40, out: new Time(23, 30)},
-        {in:  new Time(-2, -40), minutesAdded: -40, out: new Time(20, 40)},
-        {in:  new Time(0, -40), minutesAdded: -20, out: new Time(23, 0)},
+        { in: new Time(2, 20), minutesAdded: -4 * 60 - 20, out: new Time(22, 0) },
+        { in: new Time(24, 10), minutesAdded: -40, out: new Time(23, 30) },
+        { in: new Time(-2, -40), minutesAdded: -40, out: new Time(20, 40) },
+        { in: new Time(0, -40), minutesAdded: -20, out: new Time(23, 0) },
       ];
 
       for (const data of testData) {
@@ -212,7 +211,6 @@ describe("Time", () => {
         });
       }
     });
-
 
     it("should ignore decimals", () => {
       const time = new Time(2, 10);
