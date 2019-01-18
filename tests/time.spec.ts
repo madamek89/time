@@ -138,6 +138,12 @@ describe("Time", () => {
   });
 
   describe("addMinutes()", () => {
+    interface ITestData {
+      in: Time;
+      minutesAdded: number;
+      out: Time;
+    }
+
     it("should add minutes", () => {
       const time = new Time(8, 20);
 
@@ -156,41 +162,55 @@ describe("Time", () => {
       expect(time.minutes).toBe(5);
     });
 
-    it("should overflow to next hour", () => {
-      const time = new Time(8, 20);
 
-      time.addMinutes(80);
+    describe("hour overflowing", () => {
+      const testData : ITestData[]  = [
+        {in:  new Time(8, 20), minutesAdded: -80, out: new Time(7, 0)},
+        {in:  new Time(0, 0), minutesAdded: -0, out: new Time(0, 0)},
+        {in:  new Time(23, 20), minutesAdded: -30, out: new Time(22, 50)},
 
-      expect(time.hours).toBe(9);
-      expect(time.minutes).toBe(40);
+        {in:  new Time(8, 20), minutesAdded: 80, out: new Time(9, 40)},
+        {in:  new Time(0, 0), minutesAdded: 130, out: new Time(2, 10)},
+        {in:  new Time(0, 0), minutesAdded: 61.9, out: new Time(1, 1)},
+      ];
+
+      for (const data of testData) {
+        it("should overflow to next or previous hour", () => {
+          const time = data.in;
+
+          time.addMinutes(data.minutesAdded);
+
+          expect(time.hours).toBe(data.out.hours);
+          expect(time.minutes).toBe(data.out.minutes);
+        });
+      }
     });
 
-    it("should overflow to previous hour", () => {
-      const time = new Time(8, 20);
+    describe("day overflowing", () => {
+      const testData : ITestData[]  = [
+        {in:  new Time(22, 20), minutesAdded: 4 * 60 + 20, out: new Time(2, 40)},
+        {in:  new Time(23, 30), minutesAdded: 40, out: new Time(24, 10)},
+        {in:  new Time(-1.5, 0.5), minutesAdded: 65, out: new Time(24, 5)},
+        {in:  new Time(0, 40), minutesAdded: 20, out: new Time(1, 0)},
 
-      time.addMinutes(-80);
+        {in:  new Time(2, 20), minutesAdded: -4 * 60 - 20, out: new Time(22, 0)},
+        {in:  new Time(24, 10), minutesAdded: -40, out: new Time(23, 30)},
+        {in:  new Time(-2, -40), minutesAdded: -40, out: new Time(20, 40)},
+        {in:  new Time(0, -40), minutesAdded: -20, out: new Time(23, 0)},
+      ];
 
-      expect(time.hours).toBe(7);
-      expect(time.minutes).toBe(0);
+      for (const data of testData) {
+        it("should overflow to next or previous day", () => {
+          const time = data.in;
+
+          time.addMinutes(data.minutesAdded);
+
+          expect(time.hours).toBe(data.out.hours);
+          expect(time.minutes).toBe(data.out.minutes);
+        });
+      }
     });
 
-    it('should overflow to next "day"', () => {
-      const time = new Time(22, 20);
-
-      time.addMinutes(4 * 60 + 20);
-
-      expect(time.hours).toBe(2);
-      expect(time.minutes).toBe(40);
-    });
-
-    it('should overflow to previous "day"', () => {
-      const time = new Time(2, 20);
-
-      time.addMinutes(-4 * 60 - 20);
-
-      expect(time.hours).toBe(22);
-      expect(time.minutes).toBe(0);
-    });
 
     it("should ignore decimals", () => {
       const time = new Time(2, 10);
