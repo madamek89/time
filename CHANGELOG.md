@@ -1,3 +1,12 @@
+<a name="1.3.1"></a>
+## [1.3.1](https://github.com/arutkowski00/time/compare/v1.3.0...v1.3.1) (2019-01-19)
+
+
+### Bug Fixes
+
+* change way of dealing with hours number after the decimal point, exemplary problematic case new Time(-0,-20) ([b4880ce](https://github.com/arutkowski00/time/commit/b4880ce))
+* test fix, new Time(-2,-20) should be 21:40 not 22:40 ([8177feb](https://github.com/arutkowski00/time/commit/8177feb))
+
 <a name="1.3.0"></a>
 # [1.3.0](https://github.com/arutkowski00/time/compare/v1.2.0...v1.3.0) (2018-07-16)
 
