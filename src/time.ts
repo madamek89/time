@@ -108,13 +108,12 @@ export class Time implements ITime {
 
     // truncate decimal part
     this._minutes |= 0;
+    this._hours |= 0;
 
     if (this._minutes >= HOUR || this._minutes < 0) {
-      this._hours += this._minutes / HOUR;
+      this._hours += Math.floor(this._minutes / HOUR);
       this._minutes = mod(this._minutes, HOUR);
     }
-
-    this._hours |= 0;
 
     // DAY + 1 - allow both 24:00 and 00:00
     if (this._hours >= DAY + 1 || this._hours < 0) {
