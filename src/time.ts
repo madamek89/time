@@ -115,8 +115,7 @@ export class Time implements ITime {
       this._minutes = mod(this._minutes, HOUR);
     }
 
-    // DAY + 1 - allow both 24:00 and 00:00
-    if (this._hours >= DAY + 1 || this._hours < 0) {
+    if (this._hours >= DAY || this._hours < 0) {
       this._hours = mod(this._hours, DAY);
     }
   }
